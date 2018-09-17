@@ -1564,7 +1564,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1142466675}
   m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0, y: 2.05, z: 1.3}
+  m_LocalPosition: {x: 1.655, y: 1.888, z: 0.402}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 68915113}
@@ -1902,7 +1902,7 @@ MonoBehaviour:
   m_MinLaunchForce: 5
   m_MaxLaunchForce: 20
   m_MaxChargeTime: 0.75
-  m_CarryBall: 0
+  carrying: 0
 --- !u!1001 &1853473594
 Prefab:
   m_ObjectHideFlags: 0
@@ -2043,7 +2043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1943252927
 MonoBehaviour:
   m_ObjectHideFlags: 0

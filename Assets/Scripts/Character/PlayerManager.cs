@@ -72,6 +72,7 @@ public class PlayerManager : MonoBehaviour {
     {
         m_Fired = true;
 
+        m_Ball.GetComponent<Rigidbody>().isKinematic = false;
         m_Ball.GetComponent<Rigidbody>().velocity = m_CurrentLaunchForce * m_FireTransform.forward;
         m_Ball.m_PlayerNumber = m_PlayerNumber;
 
@@ -90,7 +91,7 @@ public class PlayerManager : MonoBehaviour {
         {
             carrying = true;
             collision.rigidbody.isKinematic = true;
-            coll.transform.position = gameObject.transform.position;
+            coll.transform.position = m_FireTransform.transform.position;
             m_Ball = coll.GetComponent<BallManager>();
             //if (coll.GetComponent<BallManager>())
             //{
@@ -108,6 +109,6 @@ public class PlayerManager : MonoBehaviour {
     }
 
     void carry(BallManager o) {
-        o.transform.position = gameObject.transform.position;
+        o.transform.position = m_FireTransform.transform.position;
     }
 }
