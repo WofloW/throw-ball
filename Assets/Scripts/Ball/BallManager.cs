@@ -13,4 +13,23 @@ public class BallManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject coll = collision.gameObject;
+
+        if (coll.CompareTag("Player"))
+        {
+            if (coll.GetComponent<PlayerManager>())
+            {
+                if (m_PlayerNumber != coll.GetComponent<PlayerManager>().m_PlayerNumber)
+                {
+                    
+
+                }
+            }
+        } else {
+            m_PlayerNumber = 0;
+        }
+    }
 }

@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{6E03A4D0-159B-C7B2-C059-B4092F0AADD5}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Character/PlayerMovement.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Ball/BallManager.cs">
     <Files>
-      <File FileName="../../../Documents/:Users:WofloW:test:unity:throw-ball:Assets:Scripts:PlayerMovement.cs" Line="67" Column="6" />
       <File FileName="Assets/Scripts/GameManager.cs" Line="10" Column="34" />
       <File FileName="Assets/Scripts/Character/PlayerManager.cs" Line="13" Column="3" />
-      <File FileName="Assets/Scripts/Character/PlayerMovement.cs" Line="40" Column="5" />
-      <File FileName="Assets/Scripts/Ball/BallManager.cs" Line="16" Column="5" />
+      <File FileName="Assets/Scripts/Character/PlayerMovement.cs" Line="40" Column="1" />
+      <File FileName="Assets/Scripts/Ball/BallManager.cs" Line="16" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

@@ -73,6 +73,7 @@ public class PlayerManager : MonoBehaviour {
         m_Fired = true;
 
         m_Ball.GetComponent<Rigidbody>().isKinematic = false;
+        m_Ball.GetComponent<Rigidbody>().detectCollisions = true;
         m_Ball.GetComponent<Rigidbody>().velocity = m_CurrentLaunchForce * m_FireTransform.forward;
         m_Ball.m_PlayerNumber = m_PlayerNumber;
 
@@ -87,24 +88,22 @@ public class PlayerManager : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
         GameObject coll = collision.gameObject;
+
         if (coll.CompareTag("ball") && !carrying)
         {
-            carrying = true;
-            collision.rigidbody.isKinematic = true;
-            coll.transform.position = m_FireTransform.transform.position;
-            m_Ball = coll.GetComponent<BallManager>();
-            //if (coll.GetComponent<BallManager>())
-            //{
-            //    if (coll.GetComponent<BallManager>().m_PlayerNumber == 0)
-            //    {
+            if (coll.GetComponent<BallManager>())
+            {
+                if (coll.GetComponent<BallManager>().m_PlayerNumber == 0)
+                {
 
-            //        m_CarryBall = true;
-            //    }
-            //    if (coll.GetComponent<BallManager>().m_PlayerNumber != m_PlayerNumber)
-            //    {
+                    carrying = true;
+                    collision.rigidbody.isKinematic = true;
+                    collision.rigidbody.detectCollisions = false;
 
-            //    }
-            //}
+                    coll.transform.position = m_FireTransform.transform.position;
+                    m_Ball = coll.GetComponent<BallManager>();
+                }
+            }
         }
     }
 
