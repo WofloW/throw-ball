@@ -6,18 +6,25 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public PlayerManager player1;
-    public PlayerManager player2;
+    public static GameManager instance = null;
+    public PlayerManager m_Player1;
+    public PlayerManager m_Player2;
     public int m_NumToWin = 5;
-    public Text MessageText;
+    public Text m_MessageText;
 
-    // Use this for initialization
+    void Awake()
+    {
+        if (instance == null)
+            instance = this;
+        else if (instance != this)
+            Destroy(gameObject);
+    }
+
     void Start()
     {
         StartCoroutine(GameLoop());
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -33,20 +40,22 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator GamePlaying()
     {
-        yield return null;
-        //while (player1.m_Wins < 5 || player2.m_Wins < 5)
-        //{
-        //    yield return null;
-        //}
-        //if (player1.m_Wins == 5 || player2.m_Wins == 5)
+        while (m_Player1.m_Wins < 5 || m_Player2.m_Wins < 5)
+        {
+            m_MessageText.text = m_Player1.m_Wins + ":" + m_Player2.m_Wins;
+            yield return null;
+        }
+        //if (m_Player1.m_Wins == 5 || m_Player2.m_Wins == 5)
         //{
         //    string message = "DRAW!";
-        //    if(player1.m_Wins == 5 && player2.m_Wins != 5){
+        //    if(m_Player1.m_Wins == 5 && m_Player2.m_Wins != 5){
         //        message = "Player 1 wins!";
         //    } else {
         //        message = "Player 2 wins!";
         //    }
-        //    MessageText.text = message;
+        //    m_MessageText.text = message;
+        //    SceneManager.LoadScene(0);
+        //    yield return null;
         //}
     }
 }

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
     public int m_Wins = 0;
-    public int m_PlayerNumber = 1;
-    public BallManager m_Ball;
+    public int m_PlayerNumber;
+    public BallManager m_Ball = null;
     public Transform m_FireTransform;
     public Slider m_AimSlider;
     //public AudioSource m_ShootingAudio;
@@ -18,8 +19,8 @@ public class PlayerManager : MonoBehaviour {
 
     private string m_FireButton;
     private float m_CurrentLaunchForce;
-    private float m_ChargeSpeed;    
-    private bool m_Fired;       
+    private float m_ChargeSpeed;
+    private bool m_Fired;
 
 
     public bool carrying = false;
@@ -75,7 +76,7 @@ public class PlayerManager : MonoBehaviour {
         m_Ball.GetComponent<Rigidbody>().isKinematic = false;
         m_Ball.GetComponent<Rigidbody>().detectCollisions = true;
         m_Ball.GetComponent<Rigidbody>().velocity = m_CurrentLaunchForce * m_FireTransform.forward;
-        m_Ball.m_PlayerNumber = m_PlayerNumber;
+        m_Ball.m_player = this;
 
         //m_ShootingAudio.clip = m_FireClip;
         //m_ShootingAudio.Play();
@@ -93,9 +94,8 @@ public class PlayerManager : MonoBehaviour {
         {
             if (coll.GetComponent<BallManager>())
             {
-                if (coll.GetComponent<BallManager>().m_PlayerNumber == 0)
+                if (!coll.GetComponent<BallManager>().m_player)
                 {
-
                     carrying = true;
                     collision.rigidbody.isKinematic = true;
                     collision.rigidbody.detectCollisions = false;
@@ -107,7 +107,8 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    void carry(BallManager o) {
+    void carry(BallManager o)
+    {
         o.transform.position = m_FireTransform.transform.position;
     }
 }
